@@ -1,11 +1,10 @@
 #!/bin/bash
 set -e
 set -o pipefail
-
-env
-pwd
-
+set -x
 readonly INITRAMFS_PATH="${BR2_EXTERNAL_tricks_PATH}/../initramfs"
+
+readonly KERN_VER="$(ls -1 "${TARGET_DIR}/usr/lib/modules" | head -n 1)"
 
 DELETE=(
     /linuxrc
@@ -23,7 +22,7 @@ DELETE=(
 
 gen_initramfs() {
     "${INITRAMFS_PATH}"/mkinitramfs.sh
-    mv "${INITRAMFS_PATH}"/initrd.img "${TARGET_DIR}"/usr/lib/modules/*/
+    cp "${INITRAMFS_PATH}/initramfs.img" "${TARGET_DIR}/usr/lib/modules/${KERN_VER}"
 }
 
 main() {
@@ -31,8 +30,8 @@ main() {
     gen_initramfs
 
     # Move kernel to /usr
-    rm -f "${TARGET_DIR}"/usr/lib/modules/*/bzImage || true
-    mv -fu "${TARGET_DIR}"/boot/bzImage "${TARGET_DIR}"/usr/lib/modules/*/
+    ls "${TARGET_DIR}"/usr/lib/modules/*/
+    cp "${TARGET_DIR}"/boot/bzImage "${TARGET_DIR}/usr/lib/modules/${KERN_VER}/vmlinuz"
 
     # Clean up stuff
     for d in "${DELETE[@]}"; do
