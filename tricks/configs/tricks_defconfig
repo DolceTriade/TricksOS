@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2022.08-550-g9d948e1b34-dirty Configuration
+# Buildroot 2022.08-550-g9d948e1b34 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_EXTERNAL_tricks_PATH="/home/ubuntu/tricks/tricks"
@@ -452,7 +452,7 @@ BR2_GENERATE_LOCALE=""
 BR2_TARGET_TZ_INFO=y
 BR2_TARGET_TZ_ZONELIST="default"
 BR2_TARGET_LOCALTIME="Etc/UTC"
-BR2_ROOTFS_USERS_TABLES=""
+BR2_ROOTFS_USERS_TABLES="$(BR2_EXTERNAL_tricks_PATH)/board/tricks/users.txt"
 BR2_ROOTFS_OVERLAY=""
 BR2_ROOTFS_PRE_BUILD_SCRIPT=""
 BR2_ROOTFS_POST_BUILD_SCRIPT="$(BR2_EXTERNAL_tricks_PATH)/board/tricks/ostreeify.sh"

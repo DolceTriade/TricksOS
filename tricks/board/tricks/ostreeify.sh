@@ -38,6 +38,11 @@ main() {
         rm -rf "${TARGET_DIR}"/"${d}"
     done
     find "${TARGET_DIR}" -name .keep -delete
+
+    mkdir -p "${TARGET_DIR}/sysroot"
+    pushd "${TARGET_DIR}"
+    ln -sfr sysroot/ostree ostree
+    popd
 }
 
 main

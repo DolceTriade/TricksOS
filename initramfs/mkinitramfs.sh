@@ -110,7 +110,6 @@ FILES=(
     /usr/lib/systemd/system/getty-pre.target
     /usr/lib/systemd/system/getty.target
     /usr/lib/systemd/system/getty@.service
-    /usr/lib/systemd/system/getty@.service.d
     /usr/lib/systemd/system/graphical.target
     /usr/lib/systemd/system/halt.target
     /usr/lib/systemd/system/initrd-cleanup.service
